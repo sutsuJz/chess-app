@@ -1,25 +1,30 @@
-import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Chessboard from './components/Chessboard/Chessboard'
+import Juomapeli from './components/Juomapeli/Juomapeli';
+
+import React, { useState } from 'react';
+
 
 function App() {
+  const [showComponent, setShowComponent] = useState(true);
+  const toggleComponent = () => {
+    setShowComponent(!showComponent);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+    
+      <div id="app"> 
+        <button onClick={toggleComponent}>
+        {showComponent ? 'Pelaa rikkinäistä shakkia' : 'Pelaa juomapeliä'}
+      </button> <br />
+      {showComponent && <Juomapeli />} {/* Display Chessboard component */}
+      
+      {!showComponent && <Chessboard />} {/* Display Juomapeli component */}
+    
+      </div>
+    
+    
   );
 }
 
